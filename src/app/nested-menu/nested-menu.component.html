@@ -1,0 +1,6 @@
+<div *ngIf="categories$ | async as categories">
+    <app-mat-menu
+    [data]="categories"
+    [isRootNode]="true"
+  ></app-mat-menu>
+</div>

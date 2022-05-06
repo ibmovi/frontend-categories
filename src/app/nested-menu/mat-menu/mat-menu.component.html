@@ -1,0 +1,16 @@
+<button *ngIf="isRootNode; else rootMenuItem" mat-button [matMenuTriggerFor]="menu">
+    {{triggerName}}
+</button>
+<ng-template #rootMenuItem>
+  <button mat-menu-item [matMenuTriggerFor]="menu">{{triggerName}}</button>
+</ng-template>
+<mat-menu #menu="matMenu">
+  <ng-container *ngFor="let category of data">
+    <button mat-menu-item>
+      <app-mat-menu *ngIf="category.children; else menuItem" [data]="category.children" [triggerName]="category.name"></app-mat-menu>
+    </button>
+    <ng-template #menuItem>
+      <button mat-menu-item>{{ category.name }}</button>
+    </ng-template>
+  </ng-container>
+</mat-menu>
